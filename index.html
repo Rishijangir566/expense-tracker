@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+   
+</style>
+<body>
+
+    <input type="number" id="totalMoney" placeholder="salary">
+    <button id="total"> Add</button>
+    <br><br>
+    <input type="text" id="kharchaName" placeholder="kharcha kaha kiya">
+    <input type="number" id="kharchaMoney" placeholder="kharcha kitna kiya">
+    <button id="spend"> Spend</button>
+
+    <div id="wrapper">
+        <p>Total : <span id="totalMoneyBank"></span></p>
+        <!-- <p> Kharcha Name : <span id="kharchaKha"></span></p>
+        <p>Kharcha Name Prize : <span id="kharchaKitna"></span></p> -->
+    </div>
+
+    <script>
+
+      let totalMoney = document.querySelector("#totalMoney")
+      let totalAddBtn = document.querySelector("#total")
+      let kharchaName = document.querySelector("#kharchaName")
+      let kharchaMoney = document.querySelector("#kharchaMoney")
+      let spendBtn = document.querySelector("#spend")
+      let totalMoneyShow = document.querySelector("#totalMoneyBank")
+      let kharchaKhaShow = document.querySelector("#kharchaKha")
+      let kharchaKitnaShow = document.querySelector("#kharchaKitna")
+     let wrapperBox = document.querySelector("#wrapper")
+
+
+
+    totalAddBtn.addEventListener("click" , function(){
+         totalMoneyShow.innerHTML = totalMoney.value
+    })
+
+
+    let spendmoney =0;
+    // remain= 0;
+    spendBtn.addEventListener("click" , function(){
+        
+        let div =document.createElement("div")
+        let para1 = document.createElement("p")
+        let para2 = document.createElement("p")
+        let remain = document.createElement("p")
+        
+
+         if(Number(kharchaMoney.value)>Number(totalMoney.value)){
+             alert("paisa ki kmiii ..... ")
+            }else{
+                // kharchaKhaShow.innerHTML = kharchaName.value
+                // kharchaKitnaShow.innerHTML = kharchaMoney.value
+
+            para1.innerHTML="kharcha Name : "+ kharchaName.value
+            para2.innerHTML="kharcha Name Prize : "+ kharchaMoney.value
+            
+            spendmoney = Number(spendmoney) + Number(kharchaMoney.value)  
+            remain.innerHTML=Number(totalMoney.value) - Number(spendmoney) 
+            console.log(spendmoney)
+             if(remain.innerHTML<0){
+                 alert("not money")
+                 para1.innerHTML=""
+                 para2.innerHTML=""
+                 remain.innerHTML="Remain : not money"
+                }
+                
+            // remain.innerHTML=Number(lastremain)- Number(kharchaMoney.value) 
+            div.append(para1) 
+            div.append(para2) 
+            div.append(remain) 
+             wrapperBox.append(div)
+        }
+
+  
+
+
+    })
+
+
+
+    </script>
+</body>
+</html>
